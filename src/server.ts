@@ -10,6 +10,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
-RegisterExpressRoutes(app, [AccountsController, UsersController])
+RegisterExpressRoutes(app, [AccountsController, UsersController]);
 
 app.listen(3000);

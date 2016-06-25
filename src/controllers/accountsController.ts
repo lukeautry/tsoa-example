@@ -4,7 +4,6 @@ import {User} from '../models/user';
 
 @Route('Accounts')
 export class AccountsController extends Controller {
-
     /**
      * Get the current account
      */

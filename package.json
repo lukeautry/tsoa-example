@@ -5,7 +5,7 @@
   "scripts": {
     "typings": "typings",
     "build": "npm run clean && npm run lint && tsc",
-    "lint": "tslint 'src/**/*.ts' --exclude '**/*.d.ts'",
+    "lint": "tslint ./src/**/*.ts",
     "clean": "rimraf dist",
     "swagger-gen": "lucid-swagger-generate --outFile=./dist/swagger.json --mainFile=./src/server.ts"
   },
@@ -22,5 +22,9 @@
     "tslint": "^3.11.0",
     "typescript": "^1.8.10",
     "typings": "^1.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukeautry/lucid-web-api-example.git"
   }
 }
