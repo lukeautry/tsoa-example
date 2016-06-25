@@ -1,8 +1,7 @@
 {
   "name": "lucid-web-api-example",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "An example app using Lucid Web API framework",
   "scripts": {
     "typings": "typings",
     "build": "npm run clean && npm run lint && tsc",
@@ -10,7 +9,6 @@
     "clean": "rimraf dist",
     "swagger-gen": "lucid-swagger-generate --outFile=./dist/swagger.json --mainFile=./src/server.ts"
   },
-  "keywords": [],
   "author": "Luke Autry <lukeautry@gmail.com> (http://www.lukeautry.com)",
   "license": "MIT",
   "dependencies": {
