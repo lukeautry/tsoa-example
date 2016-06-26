@@ -4,9 +4,7 @@ import {User} from '../models/user';
 
 @Route('Accounts')
 export class AccountsController extends Controller {
-    /**
-     * Get the current account
-     */
+    /** Get the current account */
     @Get('Current')
     public async current(someFlag: boolean): Promise<Account> {
         return {
@@ -15,6 +13,7 @@ export class AccountsController extends Controller {
         };
     }
 
+    /** Get a list of users for the account */
     @Get('Users')
     public async getUsers(): Promise<User[]> {
         return [
