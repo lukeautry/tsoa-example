@@ -1,5 +1,5 @@
 import {AccountsController} from './controllers/accountsController';
-import {RegisterExpressRoutes} from 'lucid-web-api';
+import {RegisterExpressRoutes} from 'swagger-ts';
 import {UsersController} from './controllers/usersController';
 import * as bodyParser from 'body-parser';
 import * as express from 'express';

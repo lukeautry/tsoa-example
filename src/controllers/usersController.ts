@@ -1,4 +1,4 @@
-import {Controller, Route, Get, Post, Delete, Patch, Example} from 'lucid-web-api';
+import {Controller, Route, Get, Post, Delete, Patch, Example} from 'swagger-ts';
 import {User, UserCreateRequest, UserUpdateRequest} from '../models/user';
 
 @Route('Users')

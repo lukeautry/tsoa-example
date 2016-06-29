@@ -1,20 +1,20 @@
 {
-  "name": "lucid-web-api-example",
+  "name": "swagger-ts-example",
   "version": "0.0.1",
-  "description": "An example app using Lucid Web API framework",
+  "description": "An example app using swagger-ts",
   "scripts": {
     "typings": "typings",
     "build": "npm run clean && npm run lint && tsc",
     "lint": "tslint ./src/**/*.ts",
     "clean": "rimraf dist",
-    "swagger-gen": "lucid-swagger-generate --outFile=./dist/swagger.json --mainFile=./src/server.ts"
+    "swagger-gen": "swagger-ts-generate --outFile=./dist/swagger.json --mainFile=./src/server.ts"
   },
   "author": "Luke Autry <lukeautry@gmail.com> (http://www.lukeautry.com)",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "lucid-web-api": "^0.0.17",
+    "swagger-ts": "^0.0.18",
     "method-override": "^2.3.6"
   },
   "devDependencies": {
@@ -25,6 +25,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lukeautry/lucid-web-api-example.git"
+    "url": "https://github.com/lukeautry/swagger-ts-example.git"
   }
 }

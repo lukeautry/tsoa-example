@@ -1,5 +1,5 @@
 import {Account} from '../models/account';
-import {Controller, Route, Get} from 'lucid-web-api';
+import {Controller, Route, Get} from 'swagger-ts';
 import {User} from '../models/user';
 
 @Route('Accounts')
