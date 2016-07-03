@@ -1,9 +1,9 @@
 import {Account} from '../models/account';
-import {Controller, Route, Get} from 'swagger-ts';
+import {Route, Get} from 'swagger-ts';
 import {User} from '../models/user';
 
 @Route('Accounts')
-export class AccountsController extends Controller {
+export class AccountsController {
     /** Get the current account */
     @Get('Current')
     public async current(someFlag: boolean): Promise<Account> {

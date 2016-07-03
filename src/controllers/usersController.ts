@@ -1,8 +1,8 @@
-import {Controller, Route, Get, Post, Delete, Patch, Example} from 'swagger-ts';
+import {Route, Get, Post, Delete, Patch, Example} from 'swagger-ts';
 import {User, UserCreateRequest, UserUpdateRequest} from '../models/user';
 
 @Route('Users')
-export class UsersController extends Controller {
+export class UsersController {
 
     /** Get the current user */
     @Get('Current')

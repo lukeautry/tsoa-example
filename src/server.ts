@@ -1,15 +1,15 @@
-import {AccountsController} from './controllers/accountsController';
-import {RegisterExpressRoutes} from 'swagger-ts';
-import {UsersController} from './controllers/usersController';
+import './controllers/accountsController';
+import './controllers/usersController';
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as methodOverride from 'method-override';
+import {RegisterRoutes} from './routes';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
-RegisterExpressRoutes(app, [AccountsController, UsersController]);
+RegisterRoutes(app);
 
 app.listen(3000);

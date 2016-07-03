@@ -7,14 +7,15 @@
     "build": "npm run clean && npm run lint && tsc",
     "lint": "tslint ./src/**/*.ts",
     "clean": "rimraf dist",
-    "swagger-gen": "swagger-ts-generate --outFile=./dist/swagger.json --mainFile=./src/server.ts"
+    "swagger-gen": "swagger-ts-generate --swaggerDir=./dist --entryFile=./src/server.ts --routesDir=./src",
+    "prepublish": "typings install"
   },
   "author": "Luke Autry <lukeautry@gmail.com> (http://www.lukeautry.com)",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "swagger-ts": "^0.0.18",
+    "swagger-ts": "^0.0.19",
     "method-override": "^2.3.6"
   },
   "devDependencies": {
