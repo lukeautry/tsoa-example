@@ -1,21 +1,23 @@
 {
-  "name": "swagger-ts-example",
+  "name": "tsoa-example",
   "version": "0.0.1",
-  "description": "An example app using swagger-ts",
+  "description": "An example app using tsoa",
   "scripts": {
+    "start": "npm run build && node ./dist/server.js",
     "typings": "typings",
-    "build": "npm run clean && npm run lint && tsc",
+    "build": "npm run clean && npm run lint && tsc && npm run swagger-gen && npm run copy-swagger-ui",
     "lint": "tslint ./src/**/*.ts",
     "clean": "rimraf dist",
     "swagger-gen": "swagger-ts-generate --swaggerDir=./dist --entryFile=./src/server.ts --routesDir=./src",
-    "prepublish": "typings install"
+    "prepublish": "typings install",
+    "copy-swagger-ui": "cp -R src/swagger-ui/dist dist/swagger-ui"
   },
   "author": "Luke Autry <lukeautry@gmail.com> (http://www.lukeautry.com)",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "swagger-ts": "^0.0.19",
+    "tsoa": "^0.0.25",
     "method-override": "^2.3.6"
   },
   "devDependencies": {

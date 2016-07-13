@@ -1,4 +1,4 @@
-import {Route, Get, Post, Delete, Patch, Example} from 'swagger-ts';
+import {Route, Get, Post, Delete, Patch, Example} from 'tsoa';
 import {User, UserCreateRequest, UserUpdateRequest} from '../models/user';
 
 @Route('Users')

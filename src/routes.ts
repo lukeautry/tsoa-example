@@ -30,7 +30,7 @@ export function RegisterRoutes(app: any) {
 
         let validatedParams: any[] = [];
         try {
-            validatedParams = getValidatedParams(params, req);
+            validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
             res.status(err.status || 500);
             res.json(err);
@@ -46,7 +46,7 @@ export function RegisterRoutes(app: any) {
 
         let validatedParams: any[] = [];
         try {
-            validatedParams = getValidatedParams(params, req);
+            validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
             res.status(err.status || 500);
             res.json(err);
@@ -62,7 +62,7 @@ export function RegisterRoutes(app: any) {
 
         let validatedParams: any[] = [];
         try {
-            validatedParams = getValidatedParams(params, req);
+            validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
             res.status(err.status || 500);
             res.json(err);
@@ -79,7 +79,7 @@ export function RegisterRoutes(app: any) {
 
         let validatedParams: any[] = [];
         try {
-            validatedParams = getValidatedParams(params, req);
+            validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
             res.status(err.status || 500);
             res.json(err);
@@ -97,7 +97,7 @@ export function RegisterRoutes(app: any) {
 
         let validatedParams: any[] = [];
         try {
-            validatedParams = getValidatedParams(params, req);
+            validatedParams = getValidatedParams(params, req, 'request');
         } catch (err) {
             res.status(err.status || 500);
             res.json(err);
@@ -114,7 +114,7 @@ export function RegisterRoutes(app: any) {
 
         let validatedParams: any[] = [];
         try {
-            validatedParams = getValidatedParams(params, req);
+            validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
             res.status(err.status || 500);
             res.json(err);
@@ -131,7 +131,7 @@ export function RegisterRoutes(app: any) {
 
         let validatedParams: any[] = [];
         try {
-            validatedParams = getValidatedParams(params, req);
+            validatedParams = getValidatedParams(params, req, 'request');
         } catch (err) {
             res.status(err.status || 500);
             res.json(err);
@@ -158,16 +158,19 @@ export function RegisterRoutes(app: any) {
             });
     }
 
-    function getRequestParams(request: any) {
+    function getRequestParams(request: any, bodyParamName?: string) {
         const merged: any = {};
-        for (let attrname in request.body) { merged[attrname] = request.body[attrname]; }
+        if (bodyParamName) {
+            merged[bodyParamName] = request.body;
+        }
+
         for (let attrname in request.params) { merged[attrname] = request.params[attrname]; }
         for (let attrname in request.query) { merged[attrname] = request.query[attrname]; }
         return merged;
     }
 
-    function getValidatedParams(params: any, request: any): any[] {
-        const requestParams = getRequestParams(request);
+    function getValidatedParams(params: any, request: any, bodyParamName?: string): any[] {
+        const requestParams = getRequestParams(request, bodyParamName);
 
         return Object.keys(params).map(key => {
             return validateParam(params[key], requestParams[key], key);
@@ -185,7 +188,7 @@ function validateParam(typeData: any, value: any, name?: string) {
 
     switch (typeData.typeName) {
         case 'string':
-            return validateString(value);
+            return validateString(value, name);
         case 'boolean':
             return validateBool(value, name);
         case 'number':
@@ -200,13 +203,17 @@ function validateParam(typeData: any, value: any, name?: string) {
 function validateNumber(numberValue: string, name: string): number {
     const parsedNumber = parseInt(numberValue, 10);
     if (isNaN(parsedNumber)) {
-        throw new InvalidRequestException(name + 'should be a valid number.');
+        throw new InvalidRequestException(name + ' should be a valid number.');
     }
 
     return parsedNumber;
 }
 
-function validateString(stringValue: string) {
+function validateString(stringValue: string, name: string) {
+    if (typeof stringValue !== "string") {
+        throw new InvalidRequestException(name + ' should be a valid string.');
+    }
+
     return stringValue.toString();
 }
 
@@ -215,7 +222,7 @@ function validateBool(boolValue: any, name: string): boolean {
     if (boolValue.toLowerCase() === 'true') { return true; }
     if (boolValue.toLowerCase() === 'false') { return false; }
 
-    throw new InvalidRequestException(name + 'should be valid boolean value.');
+    throw new InvalidRequestException(name + ' should be valid boolean value.');
 }
 
 function validateModel(modelValue: any, typeName: string): any {
@@ -226,7 +233,7 @@ function validateModel(modelValue: any, typeName: string): any {
         modelValue[key] = validateParam(property, modelValue[key], key);
     });
 
-    return modelDefinition;
+    return modelValue;
 }
 
 function validateArray(array: any[], arrayType: string, arrayName: string): any[] {

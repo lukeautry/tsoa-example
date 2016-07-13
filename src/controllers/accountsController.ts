@@ -1,5 +1,5 @@
 import {Account} from '../models/account';
-import {Route, Get} from 'swagger-ts';
+import {Route, Get} from 'tsoa';
 import {User} from '../models/user';
 
 @Route('Accounts')
