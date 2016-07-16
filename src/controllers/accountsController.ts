@@ -18,12 +18,14 @@ export class AccountsController {
     public async getUsers(): Promise<User[]> {
         return [
             {
+                createdAt: new Date(),
                 email: 'test@test.com',
                 id: 1
             },
             {
+                createdAt: new Date(),
                 email: 'test2@test2.com',
-                id: 2
+                id: 2,
             }
         ];
     }

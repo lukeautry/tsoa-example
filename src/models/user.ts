@@ -1,6 +1,7 @@
 export interface User {
     id: number;
     email: string;
+    createdAt: Date;
 }
 
 export interface UserCreateRequest {
@@ -8,5 +9,6 @@ export interface UserCreateRequest {
 }
 
 export interface UserUpdateRequest {
+    createdAt?: Date;
     email: string;
 }

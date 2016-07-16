@@ -7,11 +7,13 @@ export class UsersController {
     /** Get the current user */
     @Get('Current')
     @Example<User>({
+        createdAt: new Date(),
         email: 'test@test.com',
         id: 1,
     })
     public async Current(): Promise<User> {
         return {
+            createdAt: new Date(),
             email: 'test',
             id: 666
         };
@@ -21,6 +23,7 @@ export class UsersController {
     @Get('{userId}')
     public async Get(userId: number): Promise<User> {
         return {
+            createdAt: new Date(),
             email: 'test2',
             id: userId
         };
@@ -33,6 +36,7 @@ export class UsersController {
     @Post()
     public async Create(request: UserCreateRequest, optionalString?: string): Promise<User> {
         return {
+            createdAt: new Date(),
             email: request.email,
             id: 666
         };
@@ -48,6 +52,7 @@ export class UsersController {
     @Patch()
     public async Update(request: UserUpdateRequest): Promise<User> {
         return {
+            createdAt: request.createdAt,
             email: request.email,
             id: 1337
         };
