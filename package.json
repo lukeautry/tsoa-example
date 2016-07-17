@@ -5,22 +5,24 @@
   "scripts": {
     "start": "npm run build && node ./dist/server.js",
     "typings": "typings",
-    "build": "npm run clean && npm run lint && tsc && npm run swagger-gen && npm run copy-swagger-ui",
+    "build": "npm run clean && npm run lint && npm run swagger-gen && npm run routes-gen && tsc && npm run copy-swagger-ui",
     "lint": "tslint ./src/**/*.ts",
     "clean": "rimraf dist",
-    "swagger-gen": "swagger-ts-generate --swaggerDir=./dist --entryFile=./src/server.ts --routesDir=./src",
+    "swagger-gen": "tsoa swagger --swaggerDir=./dist --entryFile=./src/server.ts",
+    "routes-gen": "tsoa routes --entryFile=./src/server.ts --routesDir=./src",
     "prepublish": "typings install",
-    "copy-swagger-ui": "cp -R src/swagger-ui/dist dist/swagger-ui"
+    "copy-swagger-ui": "ncp ./src/swagger-ui ./dist/swagger-ui"
   },
   "author": "Luke Autry <lukeautry@gmail.com> (http://www.lukeautry.com)",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "tsoa": "^0.0.26",
+    "tsoa": "^0.0.29",
     "method-override": "^2.3.6"
   },
   "devDependencies": {
+    "ncp": "^2.0.0",
     "rimraf": "^2.5.2",
     "tslint": "^3.11.0",
     "typescript": "^1.8.10",

@@ -2,6 +2,7 @@
 /**
  * THIS IS GENERATED CODE - DO NOT EDIT
  */
+/* tslint:disable */
 import {ValidateParam} from 'tsoa';
 import { AccountsController } from './controllers/accountsController';
 import { UsersController } from './controllers/usersController';
