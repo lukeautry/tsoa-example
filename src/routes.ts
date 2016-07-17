@@ -30,7 +30,7 @@ const models: any = {
 };
 
 export function RegisterRoutes(app: any) {
-    app.get('/Accounts/Current', function(req: any, res: any) {
+    app.get('/v1/Accounts/Current', function(req: any, res: any) {
         const params = {
             'someFlag': { typeName: 'boolean', required: true },
         };
@@ -47,7 +47,7 @@ export function RegisterRoutes(app: any) {
         const controller = new AccountsController();
         promiseHandler(controller.current.apply(controller, validatedParams), res);
     });
-    app.get('/Accounts/Users', function(req: any, res: any) {
+    app.get('/v1/Accounts/Users', function(req: any, res: any) {
         const params = {
         };
 
@@ -63,7 +63,7 @@ export function RegisterRoutes(app: any) {
         const controller = new AccountsController();
         promiseHandler(controller.getUsers.apply(controller, validatedParams), res);
     });
-    app.get('/Users/Current', function(req: any, res: any) {
+    app.get('/v1/Users/Current', function(req: any, res: any) {
         const params = {
         };
 
@@ -79,7 +79,7 @@ export function RegisterRoutes(app: any) {
         const controller = new UsersController();
         promiseHandler(controller.Current.apply(controller, validatedParams), res);
     });
-    app.get('/Users/:userId', function(req: any, res: any) {
+    app.get('/v1/Users/:userId', function(req: any, res: any) {
         const params = {
             'userId': { typeName: 'number', required: true },
         };
@@ -96,7 +96,7 @@ export function RegisterRoutes(app: any) {
         const controller = new UsersController();
         promiseHandler(controller.Get.apply(controller, validatedParams), res);
     });
-    app.post('/Users', function(req: any, res: any) {
+    app.post('/v1/Users', function(req: any, res: any) {
         const params = {
             'request': { typeName: 'UserCreateRequest', required: true },
             'optionalString': { typeName: 'string', required: false },
@@ -114,7 +114,7 @@ export function RegisterRoutes(app: any) {
         const controller = new UsersController();
         promiseHandler(controller.Create.apply(controller, validatedParams), res);
     });
-    app.delete('/Users/:userId', function(req: any, res: any) {
+    app.delete('/v1/Users/:userId', function(req: any, res: any) {
         const params = {
             'userId': { typeName: 'number', required: true },
         };
@@ -131,7 +131,7 @@ export function RegisterRoutes(app: any) {
         const controller = new UsersController();
         promiseHandler(controller.Delete.apply(controller, validatedParams), res);
     });
-    app.patch('/Users', function(req: any, res: any) {
+    app.patch('/v1/Users', function(req: any, res: any) {
         const params = {
             'request': { typeName: 'UserUpdateRequest', required: true },
         };

@@ -8,17 +8,18 @@
     "build": "npm run clean && npm run lint && npm run swagger-gen && npm run routes-gen && tsc && npm run copy-swagger-ui",
     "lint": "tslint ./src/**/*.ts",
     "clean": "rimraf dist",
-    "swagger-gen": "tsoa swagger --swaggerDir=./dist --entryFile=./src/server.ts",
-    "routes-gen": "tsoa routes --entryFile=./src/server.ts --routesDir=./src",
+    "swagger-gen": "tsoa swagger --swaggerDir=./dist --entryFile=./src/server.ts --host=localhost:3000 --basePath=/v1",
+    "routes-gen": "tsoa routes --entryFile=./src/server.ts --routesDir=./src --basePath=/v1",
     "prepublish": "typings install",
-    "copy-swagger-ui": "ncp ./src/swagger-ui ./dist/swagger-ui"
+    "copy-swagger-ui": "ncp ./src/swagger-ui ./dist/swagger-ui",
+    "tsoa": "tsoa"
   },
   "author": "Luke Autry <lukeautry@gmail.com> (http://www.lukeautry.com)",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "tsoa": "^0.0.29",
+    "tsoa": "^0.0.39",
     "method-override": "^2.3.6"
   },
   "devDependencies": {
