@@ -3,7 +3,7 @@
  * THIS IS GENERATED CODE - DO NOT EDIT
  */
 /* tslint:disable */
-import {ValidateParam} from 'tsoa';
+import { ValidateParam } from 'tsoa';
 import { AccountsController } from './controllers/accountsController';
 import { UsersController } from './controllers/usersController';
 
@@ -30,7 +30,7 @@ const models: any = {
 };
 
 export function RegisterRoutes(app: any) {
-    app.get('/v1/Accounts/Current', function(req: any, res: any) {
+    app.get('/v1/Accounts/Current', function(req: any, res: any, next: any) {
         const params = {
             'someFlag': { typeName: 'boolean', required: true },
         };
@@ -39,15 +39,13 @@ export function RegisterRoutes(app: any) {
         try {
             validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
-            res.status(err.status || 500);
-            res.json(err);
-            return;
+            return next(err);
         }
 
         const controller = new AccountsController();
-        promiseHandler(controller.current.apply(controller, validatedParams), res);
+        promiseHandler(controller.current.apply(controller, validatedParams), res, next);
     });
-    app.get('/v1/Accounts/Users', function(req: any, res: any) {
+    app.get('/v1/Accounts/Users', function(req: any, res: any, next: any) {
         const params = {
         };
 
@@ -55,15 +53,13 @@ export function RegisterRoutes(app: any) {
         try {
             validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
-            res.status(err.status || 500);
-            res.json(err);
-            return;
+            return next(err);
         }
 
         const controller = new AccountsController();
-        promiseHandler(controller.getUsers.apply(controller, validatedParams), res);
+        promiseHandler(controller.getUsers.apply(controller, validatedParams), res, next);
     });
-    app.get('/v1/Users/Current', function(req: any, res: any) {
+    app.get('/v1/Users/Current', function(req: any, res: any, next: any) {
         const params = {
         };
 
@@ -71,15 +67,13 @@ export function RegisterRoutes(app: any) {
         try {
             validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
-            res.status(err.status || 500);
-            res.json(err);
-            return;
+            return next(err);
         }
 
         const controller = new UsersController();
-        promiseHandler(controller.Current.apply(controller, validatedParams), res);
+        promiseHandler(controller.Current.apply(controller, validatedParams), res, next);
     });
-    app.get('/v1/Users/:userId', function(req: any, res: any) {
+    app.get('/v1/Users/:userId', function(req: any, res: any, next: any) {
         const params = {
             'userId': { typeName: 'number', required: true },
         };
@@ -88,15 +82,13 @@ export function RegisterRoutes(app: any) {
         try {
             validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
-            res.status(err.status || 500);
-            res.json(err);
-            return;
+            return next(err);
         }
 
         const controller = new UsersController();
-        promiseHandler(controller.Get.apply(controller, validatedParams), res);
+        promiseHandler(controller.Get.apply(controller, validatedParams), res, next);
     });
-    app.post('/v1/Users', function(req: any, res: any) {
+    app.post('/v1/Users', function(req: any, res: any, next: any) {
         const params = {
             'request': { typeName: 'UserCreateRequest', required: true },
             'optionalString': { typeName: 'string', required: false },
@@ -106,15 +98,13 @@ export function RegisterRoutes(app: any) {
         try {
             validatedParams = getValidatedParams(params, req, 'request');
         } catch (err) {
-            res.status(err.status || 500);
-            res.json(err);
-            return;
+            return next(err);
         }
 
         const controller = new UsersController();
-        promiseHandler(controller.Create.apply(controller, validatedParams), res);
+        promiseHandler(controller.Create.apply(controller, validatedParams), res, next);
     });
-    app.delete('/v1/Users/:userId', function(req: any, res: any) {
+    app.delete('/v1/Users/:userId', function(req: any, res: any, next: any) {
         const params = {
             'userId': { typeName: 'number', required: true },
         };
@@ -123,15 +113,13 @@ export function RegisterRoutes(app: any) {
         try {
             validatedParams = getValidatedParams(params, req, '');
         } catch (err) {
-            res.status(err.status || 500);
-            res.json(err);
-            return;
+            return next(err);
         }
 
         const controller = new UsersController();
-        promiseHandler(controller.Delete.apply(controller, validatedParams), res);
+        promiseHandler(controller.Delete.apply(controller, validatedParams), res, next);
     });
-    app.patch('/v1/Users', function(req: any, res: any) {
+    app.patch('/v1/Users', function(req: any, res: any, next: any) {
         const params = {
             'request': { typeName: 'UserUpdateRequest', required: true },
         };
@@ -140,16 +128,14 @@ export function RegisterRoutes(app: any) {
         try {
             validatedParams = getValidatedParams(params, req, 'request');
         } catch (err) {
-            res.status(err.status || 500);
-            res.json(err);
-            return;
+            return next(err);
         }
 
         const controller = new UsersController();
-        promiseHandler(controller.Update.apply(controller, validatedParams), res);
+        promiseHandler(controller.Update.apply(controller, validatedParams), res, next);
     });
 
-    function promiseHandler(promise: any, response: any) {
+    function promiseHandler(promise: any, response: any, next: any) {
         return promise
             .then((data: any) => {
                 if (data) {
@@ -159,10 +145,7 @@ export function RegisterRoutes(app: any) {
                     response.end();
                 }
             })
-            .catch((error: any) => {
-                response.status(error.status || 500);
-                response.json(error);
-            });
+            .catch((error: any) => next(error));
     }
 
     function getRequestParams(request: any, bodyParamName?: string) {

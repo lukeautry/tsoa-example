@@ -4,13 +4,11 @@
   "description": "An example app using tsoa",
   "scripts": {
     "start": "npm run build && node ./dist/server.js",
-    "typings": "typings",
     "build": "npm run clean && npm run lint && npm run swagger-gen && npm run routes-gen && tsc && npm run copy-swagger-ui",
     "lint": "tslint ./src/**/*.ts",
     "clean": "rimraf dist",
     "swagger-gen": "tsoa swagger --swaggerDir=./dist --entryFile=./src/server.ts --host=localhost:3000 --basePath=/v1",
     "routes-gen": "tsoa routes --entryFile=./src/server.ts --routesDir=./src --basePath=/v1",
-    "prepublish": "typings install",
     "copy-swagger-ui": "ncp ./src/swagger-ui ./dist/swagger-ui",
     "tsoa": "tsoa"
   },
@@ -19,18 +17,21 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "tsoa": "^0.0.39",
+    "tsoa": "^0.0.50",
     "method-override": "^2.3.6"
   },
   "devDependencies": {
+    "@types/body-parser": "0.0.30",
+    "@types/express": "^4.0.30",
+    "@types/method-override": "0.0.27",
+    "@types/node": "^6.0.33",
     "ncp": "^2.0.0",
     "rimraf": "^2.5.2",
     "tslint": "^3.11.0",
-    "typescript": "^1.8.10",
-    "typings": "^1.2.0"
+    "typescript": "^2.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lukeautry/swagger-ts-example.git"
+    "url": "https://github.com/lukeautry/tsoa-example.git"
   }
 }
