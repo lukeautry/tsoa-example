@@ -18,4 +18,6 @@ app.use(methodOverride());
 
 RegisterRoutes(app);
 
+/* tslint:disable-next-line */
+console.log('Starting server...');
 app.listen(3000);
