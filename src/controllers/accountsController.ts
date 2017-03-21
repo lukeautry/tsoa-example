@@ -6,7 +6,7 @@ import {User} from '../models/user';
 export class AccountsController {
     /** Get the current account */
     @Get('Current')
-    public async current(someFlag: boolean): Promise<Account> {
+    public async current(): Promise<Account> {
         return {
             id: 600,
             name: 'test'
