@@ -1,4 +1,4 @@
-import {Account} from '../models/account';
+import {TestAccount} from '../models/account';
 import {Route, Get} from 'tsoa';
 import {User} from '../models/user';
 
@@ -6,7 +6,7 @@ import {User} from '../models/user';
 export class AccountsController {
     /** Get the current account */
     @Get('Current')
-    public async current(): Promise<Account> {
+    public async current(): Promise<TestAccount> {
         return {
             id: 600,
             name: 'test'

@@ -10,7 +10,7 @@ const models: any = {
     "email": {"required": true, "typeName": "string"},
     "createdAt": {"required": true, "typeName": "datetime"},
   },
-  "Account": {
+  "TestAccount": {
     "id": {"required": true, "typeName": "double"},
     "address": {"required": false, "typeName": "string"},
     "name": {"required": true, "typeName": "string"},
