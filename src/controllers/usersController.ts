@@ -29,9 +29,9 @@ export class UsersController {
         };
     }
 
-    /** 
-     * Create a user 
-     * @param request This is a user creation request description 
+    /**
+     * Create a user
+     * @param request This is a user creation request description
      */
     @Post()
     public async Create(@Body() request: UserCreateRequest): Promise<User> {
