@@ -1,14 +1,8 @@
-Run 
+To run the server:
 
 ```
-npm i
+yarn
+yarn start
 ```
 
-...then run 
-```
-npm start
-``` 
-
-to start serving on port 3000, open 
-
-Last tested with nodejs version 6.7.0 and npm 3.10.3 on MacOs El Capitan and Windows 10
+For a much better application boilerplate using tsoa, check out [ts-app](https://github.com/lukeautry/ts-app)
